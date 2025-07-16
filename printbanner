@@ -25,7 +25,7 @@ def main():
     font = choose_font(term_width)
 
     # Generate ASCII banner
-    banner = pyfiglet.figlet_format("welcome backs, shan10", font=font)
+    banner = pyfiglet.figlet_format("welcome back, shan10", font=font)
 
     print(banner)
 
