@@ -3,11 +3,15 @@
 # mostly aliases along with other stuff i want to display at start up
 alias epic=bat
 alias cls=clear
+alias code=codium
+alias neofetch="fastfetch --logo arch"
+alias ebat="codium ~/.jojobin/jojo -n"
 
 # activate python env 
 source /home/shanten/.jojobin/env/bin/activate
 
+# print banner
+printbanner
 
-# Print section:
-# last job: print le banner/other shit 
-~/.jojobin/printbanner
+# init nvm 
+source /usr/share/nvm/init-nvm.sh

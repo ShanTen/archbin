@@ -4,7 +4,7 @@ query="$*"
 search_url="https://www.google.co.uk/search?q=${query// /+}"
 
 if pgrep -x "firefox" > /dev/null; then
-    firefox "$search_url"
+    firefox "$search_url" & disown 
 else
     firefox "$search_url" & disown
 
@@ -14,13 +14,13 @@ else
     done
 fi
 
-# Once Firefox is running, bring the window to the current workspace
-firefox_window=$(hyprctl clients -j | jq -r '.[] | select(.class == "firefox") | .address' | head -n 1)
-current_workspace=$(hyprctl activeworkspace -j | jq -r '.id')
+# # Once Firefox is running, bring the window to the current workspace
+# firefox_window=$(hyprctl clients -j | jq -r '.[] | select(.class == "firefox") | .address' | head -n 1)
+# current_workspace=$(hyprctl activeworkspace -j | jq -r '.id')
 
-if [[ -n "$firefox_window" && -n "$current_workspace" ]]; then
-    hyprctl dispatch movetoworkspace "$current_workspace,address:$firefox_window"
-    hyprctl dispatch focuswindow address:$firefox_window
-else
-    echo "Could not move Firefox to current workspace."
-fi
+# if [[ -n "$firefox_window" && -n "$current_workspace" ]]; then
+#     hyprctl dispatch movetoworkspace "$current_workspace,address:$firefox_window"
+#     hyprctl dispatch focuswindow address:$firefox_window
+# else
+#     echo "Could not move Firefox to current workspace."
+# fi
